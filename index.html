@@ -11,7 +11,23 @@
 
 <div class="content">
 	<h1>CDA Stuff</h1>
-	<textarea style="resize:none" name="name" id="mainDocumentArea"></textarea>
+	<!-- <textarea style="resize:none" name="name" id="mainDocumentArea"></textarea> -->
+	<form id="myForm">
+		<div class="ui-widget">
+		  <label >Description: </label>
+		  <input type="text" name="description" id="description">
+			</br>
+		  <label >Value / Unit: </label>
+		  <input type="text" name="value_unit" id="value_unit">
+			</br>
+		  <label >Interpretation: </label>
+		  <input type="text" name="interpretation" id="interpretation">
+			</br>
+		  <label >Reference Range: </label>
+		  <input type="text" name="reference_range" id="reference_range">
+		</div>
+	</form>
+
 	<div class="buttons">
 		<button id="button">button</button>
 	</div>
