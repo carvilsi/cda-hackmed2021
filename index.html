@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="us">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>CDA Stuff</title>
@@ -10,16 +10,46 @@
 <body>
 
 <div class="content">
-	<h1>CDA Stuff</h1>
-	<textarea style="resize:none" name="name" id="mainDocumentArea"></textarea>
+	<h1>Results CDA generator</h1>
+        <select id="formType">
+            <option id="0" selected="selected"> - </option>
+            <option id="1" selected="selected"> COVID results </option>
+        </select>
+        <br/>
 	<div class="buttons">
-		<button id="button">button</button>
+            <button id="button" disabled="disabled">Load Patient information</button>
 	</div>
+        <form id="reportForm">
+            <table id="patientName">
+                <thead>
+                    <th>Family Name</th>
+                    <th>Given Name</th>
+                    <th>Second And Further Given Names Or Initials Thereof</th>
+                    <th>Suffix (e.g., Jr Or Iii)</th>
+                    <th>Prefix (e.g., Dr)</th>
+                    <th>Effective Date</th>
+                    <th>Expiration Date</th>
+                    <th>Professional Suffix</th>
+                    <th>Called By</th>
+                </thead>
+                <tr>
+                    <td>Everyman</td>
+                    <td>Adam</td>
+                </tr>
+            </table>
+            <br/>
+            <select id="administrativeGender" name="administrativeGender">
+                <option value="F">Female</option>
+                <option value="M">Male</option>
+                <option value="UN">Undifferenciated</option>
+            </select>
+        </form>
+	<textarea style="resize:none" name="name" id="mainDocumentArea"></textarea>
 </div>
 
 
 <script>window.$ = window.jQuery = require('jquery');</script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
