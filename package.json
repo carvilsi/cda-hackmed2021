@@ -1,15 +1,18 @@
 {
-	"name": "electron-jqueryui-quick-start",
+	"name": "cda-hackmed2021",
 	"version": "0.1.0",
-	"description": "A minimal Electron application with jQuery UI integration",
+	"description": "CDA things",
 	"main": "main.js",
 	"scripts": {
-		"start": "electron ."
+		"start": "electron .",
+		"dev": "nodemon --watch * --exec electron .",
+		"watch": "./node_modules/nodemon/bin/nodemon.js --ext js,html,css --exec \"electron .\""
 	},
 	"author": "Satya Choudhury",
 	"license": "MIT",
 	"devDependencies": {
-		"electron": "~>1.8.2-beta5"
+		"electron": "~>1.8.2-beta5",
+		"nodemon": "^2.0.7"
 	},
 	"dependencies": {
 		"jquery": "^3.2.1"
