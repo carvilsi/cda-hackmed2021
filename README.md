@@ -4,6 +4,6 @@
 
 `npm start`
 
-For develop mode:
+For develop mode (auto-reload electron on changes):
 
 `npm run watch`
