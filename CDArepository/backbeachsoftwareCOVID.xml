@@ -1,0 +1,447 @@
+<?xml-stylesheet type='text/xsl' href='CDA.xsl' ?>
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3">
+	<!--  HL7 Example Task Force
+	http://wiki.hl7.org/index.php?title=170.314(b)(2)_Transitions_of_care
+
+	TD170.314(b)(2) – 1: Ambulatory 
+		This document contains test data used in 170.314(b)(2) in the ambulatory setting. The data contained within this document are intended to provide a patient record to be formatted according to the Consolidated CDA IG (HL7 Implementation Guide for CDA Release 2: IHE Health Story Consolidation, DSTU Release 1.1 Draft Standard for Trial Use July 2012) and subsequently transmitted. 
+
+	170.314(b)(2) – 1: Ambulatory  
+
+	Mr. Adam Everyman is a 50-year-old White male with a history of asthma controlled by albuterol for breakthrough. He presented at Get Well Clinic on August 15, 2012 with a one day history of increased difficulty breathing. Nancy Nightingale, RN, took Mr. Everyman’s vital signs after which Dr. Samir Khan saw him. Dr. Khan diagnosed Mr. Everyman with costal chondritis. He was instructed to take over-thecounter analgesic medication as needed and was referred to Dr. Penny Puffer, a pulmonologist, for pulmonary function tests. 
+
+	-->
+	<realmCode code="US"/>
+	<typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3"/>
+	<!-- C-CDA 1.1 -->
+	<templateId root="2.16.840.1.113883.10.20.22.1.1"/>
+	<!-- C-CDA 1.1 CCD -->
+	<templateId root="2.16.840.1.113883.10.20.22.1.2"/>
+	<id extension="66670992" root="1.3.6.1.4.1.42424242.4.99930.4.1"/>
+	<code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="SUMMARIZATION OF EPISODE NOTE"/>
+	<title>Summary of Care</title>
+	<effectiveTime value="20120815110000-0800"/>
+	<confidentialityCode codeSystem="2.16.840.1.113883.5.25" code="N" codeSystemName="HL7 ConfidentialityCode"/>
+	<languageCode code="en-US"/>
+	<!--  A)	Patient Demographics
+				•	Patient name: Adam Everyman 
+				•	Sex: M 
+				•	Date of birth: 10/22/1962 
+				•	Race: White 
+				•	Ethnicity: Not Hispanic or Latino 
+				•	Preferred language: English 
+
+		from: https://github.com/jddamore/HL7-Task-Force-Examples/blob/master/DEMO_Record_Target_Example.xml
+	-->
+	<recordTarget>
+		<patientRole>
+			<!-- The @root OID below (which is fictional) would be specific to an institution's record identifier system. -->
+			<id root="2.16.840.1.113883.3.6132" extension="345678912-0154"/>
+			<!-- HP is "primary home" from valueSet 2.16.840.1.113883.1.11.10637 -->
+			<addr use="HP">
+				<!-- You can have multiple [1..4] streetAddressLine elements. Single shown below -->
+				<streetAddressLine>1436 Jennyhill Ln.</streetAddressLine>
+				<city>Hollywood</city>
+				<!-- 5 or 9 digit zip codes from valueSet 2.16.840.1.113883.3.88.12.80.2-->
+				<!-- PostalCode is required if the country is US. If country is not specified, it's assumed to be US. If country -->
+				<!-- is something other than US, the postalCode MAY be present but MAY be bound to different vocabularies -->
+				<postalCode>90068</postalCode>
+				<!-- State is required if the country is US. If country is not specified, it's assumed to be US. -->
+				<!-- If country is something other than US, the state MAY be present but MAY be bound to different vocabularies -->
+				<!-- OR is "Oregon" from valueSet 2.16.840.1.113883.3.88.12.80.1 -->
+				<state>CA</state>
+				<!-- US is the two digit code for "United States" -->
+				<country>US</country>
+			</addr>
+			<!-- MC is "mobile contact" from HL7 AddressUse 2.16.840.1.113883.5.1119 -->
+			<telecom value="tel:+1(565)867-5309" use="MC"/>
+			<!-- Multiple telecoms are possible -->
+			<telecom value="mailto://adam@diameterhealth.com" use="WP"/>
+			<patient>
+				<name use="L">
+					<given>Adam</given>
+					<family>Everyman</family>
+				</name>
+				<administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" displayName="Male" codeSystemName="AdministrativeGender"/>
+				<birthTime value="19621022"/>
+				<maritalStatusCode code="M" displayName="Married" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatus"/>
+				<religiousAffiliationCode code="1013" displayName="Christian (non-Catholic, non-specific)" codeSystem="2.16.840.1.113883.5.1076" codeSystemName="HL7 Religious Affiliation"/>
+				<!-- CDC Race and Ethnicity code set contains the five minimum race and ethnicity categories defined by OMB Standards -->
+				<raceCode code="2106-3" displayName="White" codeSystem="2.16.840.1.113883.6.238" codeSystemName="OMB Standards for Race and Ethnicity"/>
+				<ethnicGroupCode code="2186-5" displayName="Not Hispanic or Latino" codeSystem="2.16.840.1.113883.6.238" codeSystemName="OMB Standards for Race and Ethnicity"/>
+				<languageCommunication>
+					<languageCode code="eng"/>
+					<!-- "eng" is ISO 639-2 alpha-3 code for "English" -->
+					<modeCode code="ESP" displayName="Expressed spoken" codeSystem="2.16.840.1.113883.5.60" codeSystemName="LanguageAbilityMode"/>
+					<proficiencyLevelCode code="E" displayName="Excellent" codeSystem="2.16.840.1.113883.5.61" codeSystemName="LanguageAbilityProficiency"/>
+					<preferenceInd value="true"/>
+				</languageCommunication>
+				<!-- Multiple languages are permitted. Only one should have a preferenceInd = true -->
+				<languageCommunication>
+					<languageCode code="ita"/>
+					<!-- "ita" is ISO 639-2 alpha-3 code for "Italian" -->
+					<modeCode code="ESP" displayName="Expressed spoken" codeSystem="2.16.840.1.113883.5.60" codeSystemName="LanguageAbilityMode"/>
+					<proficiencyLevelCode code="G" displayName="Good" codeSystem="2.16.840.1.113883.5.61" codeSystemName="LanguageAbilityProficiency"/>
+					<!-- Patient's preferred language -->
+					<preferenceInd value="false"/>
+				</languageCommunication>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!-- end of A) -->
+	<!-- multiple participants may be authors of a document - see CDA R2 documentation at 4.2.2.2 author 
+		this shows a software system was the author of the document; notice that the softwareName, which may include version, 
+		is often useful information should questions arise about the content
+		Also, the example task force includes Dr. Khan here (header), but some systems would include the authors at each section authored.
+		Based on local policy additional authors could be listed in the header (Nurse involved, etc.)
+		Data provenance is a tricky topic and one that is still under discussion in SDWG and HL7. -->
+	<author>
+		<time value="20120815110000-0800"/>
+		<assignedAuthor>
+			<id root="2.16.840.1.113883.4.6" extension="1111111111"/>
+			<id extension="91171" root="1.3.6.1.4.1.42424242.4.99930.4"/>
+			<addr use="WP">
+				<streetAddressLine>Get Well Clinic</streetAddressLine>
+				<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+				<city>Portland</city>
+				<state>OR</state>
+				<postalCode>97005</postalCode>
+				<country>US</country>
+			</addr>
+			<telecom value="tel:+1-(555)555-1004" use="WP"/>
+			<assignedPerson>
+				<name>
+					<prefix qualifier="TITLE">Dr</prefix>
+					<given>Samir</given>
+					<family>Khan</family>
+				</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>
+	<author>
+		<time value="20120815110000-0800"/>
+		<assignedAuthor>
+			<id extension="4" root="1.3.6.1.4.1.42424242.4.99930.4.3.3"/>
+			<addr>
+				<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+				<city>Portland</city>
+				<state>OR</state>
+				<postalCode>97005</postalCode>
+				<country nullFlavor="UNK"/>
+			</addr>
+			<telecom value="tel:+1-(555)555-0000"/>
+			<assignedAuthoringDevice>
+				<manufacturerModelName>MY EHR VENDOR</manufacturerModelName>
+				<softwareName>MY EHR 9.7</softwareName>
+			</assignedAuthoringDevice>
+			<representedOrganization>
+				<id extension="4" root="1.3.6.1.4.1.42424242.4.99930.4"/>
+				<name>Get Well Clinic</name>
+				<telecom value="tel:+1-(555)555-0000"/>
+				<addr>
+					<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+					<city>Portland</city>
+					<state>OR</state>
+					<postalCode>97005</postalCode>
+					<country nullFlavor="UNK"/>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!-- the custodian is a required CDA Header Participant. See CDA R2 4.2.2.3 custodian -->
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<id extension="4" root="1.3.6.1.4.1.42424242.4.99930.4"/>
+				<name>Get Well Clinic</name>
+				<telecom value="tel:+1-(555)555-0000"/>
+				<addr>
+					<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+					<city>Portland</city>
+					<state>OR</state>
+					<postalCode>97005</postalCode>
+					<country nullFlavor="UNK"/>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!-- a legalAuthenticator may be present when someone has legally authenticated the document. See CDA R2 4.2.2.8 legalAuthenticator -->
+	<!-- an authenticator as a CDA Header Participant represents the participant that attested to the accuracy of the content. See CDA R2 4.2.2.1 authenticator .
+			This is not clearly defined in the test data, but it seems reasonable to believe that Dr Kahn attested the content was correct -->
+	<authenticator>
+		<time value="20120815110000-0800"/>
+		<signatureCode code="S"/>
+		<assignedEntity>
+			<id extension="1111111111" root="2.16.840.1.113883.4.6"/>
+			<addr use="WP">
+				<streetAddressLine>Get Well Clinic</streetAddressLine>
+				<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+				<city>Portland</city>
+				<state>OR</state>
+				<postalCode>97005</postalCode>
+				<country>US</country>
+			</addr>
+			<telecom value="tel:+1-(555)555-1004" use="WP"/>
+			<assignedPerson>
+				<name>
+					<prefix qualifier="TITLE">Dr</prefix>
+					<given>Samir</given>
+					<family>Khan</family>
+				</name>
+			</assignedPerson>
+		</assignedEntity>
+	</authenticator>
+	<!-- Transition of Care snip to show Care Team from test data for 170.314b2 Ambulatory
+
+B)	Care Team
+•	Dr. Samir Khan, Tel, 555-555-1004, Get Well Clinic, 1004 Healthcare Dr. Portland, OR 97005 
+•	Nancy Nightingale, RN, 555-555-1014, Get Well Clinic, 1004 Healthcare Dr. Portland, OR 97005 
+
+This example includes members of the Care Team who are performing care services in the documentationOf/serviceEvent.
+Based on current implementation guidance, additional active members (not involved in these care services) of the patient's 
+Care Team should be represented in documentationOf/serviceEvent.
+When the document is about a single encounter, the componentOf/encompassingEncounter is more appropriate for members responsible
+for or participating in the encounter.
+
+	from: https://github.com/gecole/HL7-Task-Force-Examples/blob/master/CareTeamToC170.314b2Ambulatory.xml
+ -->
+	<documentationOf>
+		<serviceEvent classCode="PCPR">
+			<id extension="5283815" root="1.3.6.1.4.1.42424242.4.99930.4.3.8"/>
+			<!-- The service event being documented is shown as happening from 10 - 11 Pacific Time  on 8/15/2012. 
+			     The date is in the Test Data for §170.314(b)(2) Transitions of care the test data. -->
+			<effectiveTime>
+				<low value="20120815100000-0800"/>
+				<high value="20120815110000-0800"/>
+			</effectiveTime>
+			<!-- Preferably, the patient’s key healthcare care team members would be listed, particularly their primary physician and any active consulting physicians, therapists, and counselors (CONF:16753).
+					there are two Care Team members, so two performer elements. 
+								 -->
+			<performer typeCode="PRF">
+				<!-- we infer from the test data description that Dr Khan is the PCP -->
+				<!-- MAY provide functionCode CONF:16818-->
+				<functionCode codeSystem="2.16.840.1.113883.5.88" code="PCP" displayName="Primary Care Physician"/>
+				<!-- we do not know how long Dr Kahn has been associated with the patient	-->
+				<time>
+					<low nullFlavor="UNK"/>
+				</time>
+				<assignedEntity>
+					<!-- a fake NPI number -->
+					<id extension="1111111111" root="2.16.840.1.113883.4.6"/>
+					<!-- a code from the NUCC Health Care Provider taxonomy showing this is an an internal medicine provider -->
+					<code codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Health Care Provider Taxonomy" code="207R00000X" displayName="Internal Medicine"/>
+					<!-- work address -->
+					<addr use="WP">
+						<streetAddressLine>Get Well Clinic</streetAddressLine>
+						<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+						<city>Portland</city>
+						<state>OR</state>
+						<postalCode>97005</postalCode>
+						<country>US</country>
+					</addr>
+					<!-- work place-->
+					<telecom value="tel:+1-(555)555-1004" use="WP"/>
+					<assignedPerson>
+						<name>
+							<prefix qualifier="TITLE">Dr</prefix>
+							<given>Samir</given>
+							<family>Khan</family>
+						</name>
+					</assignedPerson>
+				</assignedEntity>
+			</performer>
+			<performer typeCode="PRF">
+				<!-- we do not have a function code for the RN -->
+				<time>
+					<low nullFlavor="UNK"/>
+				</time>
+				<assignedEntity>
+					<!-- this provider has an id, but it is not an NPI  -->
+					<id extension="91138" root="1.3.6.1.4.1.42424242.4.99930.4"/>
+					<!-- the provider is a Registered Nurse -->
+					<code codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Health Care Provider Taxonomy" code="163W00000X" displayName="Registered Nurse"/>
+					<addr use="WP">
+						<streetAddressLine>Get Well Clinic</streetAddressLine>
+						<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+						<city>Protland</city>
+						<state>OR</state>
+						<postalCode>97005</postalCode>
+						<country>US</country>
+					</addr>
+					<telecom value="tel:+1-(555)555-1014" use="WP"/>
+					<assignedPerson>
+						<name>
+							<given>Nancy</given>
+							<family>Nightingale</family>
+							<suffix qualifier="TITLE">RN</suffix>
+						</name>
+					</assignedPerson>
+				</assignedEntity>
+			</performer>
+		</serviceEvent>
+	</documentationOf>
+	<!-- end of B) -->
+	<!-- Extra: Unspecified in the scenario -->
+	<componentOf>
+		<encompassingEncounter>
+			<id extension="5283815" root="1.3.6.1.4.1.42424242.4.99930.4.3.4"/>
+			<effectiveTime>
+				<low value="20120815100000-0800"/>
+				<high value="20120815110000-0800"/>
+			</effectiveTime>
+			<encounterParticipant typeCode="ATND">
+				<assignedEntity>
+					<!-- a fake NPI number -->
+					<id extension="1111111111" root="2.16.840.1.113883.4.6"/>
+					<!-- a code from the NUCC Health Care Provider taxonomy showing this is an an internal medicine provider -->
+					<code codeSystem="2.16.840.1.113883.6.101"
+						codeSystemName="NUCC Health Care Provider Taxonomy" code="207R00000X"
+						displayName="Internal Medicine"/>
+					<!-- work address -->
+					<addr use="WP">
+						<streetAddressLine>Get Well Clinic</streetAddressLine>
+						<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+						<city>Portland</city>
+						<state>OR</state>
+						<postalCode>97005</postalCode>
+						<country>US</country>
+					</addr>
+					<!-- work place-->
+					<telecom value="tel:+1-(555)555-1004" use="WP"/>
+					<assignedPerson>
+						<name>
+							<family>Khan</family>
+							<given>Samir</given>
+							<prefix qualifier="TITLE">Dr</prefix>
+						</name>
+					</assignedPerson>
+				</assignedEntity>
+			</encounterParticipant>
+			<encounterParticipant typeCode="ATND">
+				<assignedEntity>
+				<!-- this provider has an id, but it is not an NPI  -->
+		 			<id extension="91138" root="1.3.6.1.4.1.42424242.4.99930.4"/>
+					<!-- the provider is a Registered Nurse -->
+					<code codeSystem="2.16.840.1.113883.6.101"
+						codeSystemName="NUCC Health Care Provider Taxonomy" code="163W00000X"
+						displayName="Registered Nurse"/>
+						<addr use="WP">
+							<streetAddressLine>Get Well Clinic</streetAddressLine>
+							<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+							<city>Protland</city>
+							<state>OR</state>
+							<postalCode>97005</postalCode>
+							<country>US</country>
+						</addr>
+						<telecom value="tel:+1-(555)555-1014" use="WP"/>
+						<assignedPerson>
+							<name>
+								<family>Nightingale</family>
+								<given>Nancy</given>
+								<suffix qualifier="TITLE">RN</suffix>
+							</name>
+						</assignedPerson>
+					</assignedEntity>
+			</encounterParticipant>
+			<location>
+				<healthCareFacility>
+					<location>
+						<addr use="WP">
+							<streetAddressLine>Get Well Clinic</streetAddressLine>
+							<streetAddressLine>1004 Healthcare Dr</streetAddressLine>
+							<city>Protland</city>
+							<state>OR</state>
+							<postalCode>97005</postalCode>
+							<country>US</country>
+						</addr>
+					</location>
+				</healthCareFacility>
+			</location>
+		</encompassingEncounter>
+	</componentOf>
+	<component>
+		<structuredBody>
+                        <component>
+                            <section>
+                                <!-- Results Section with Coded Entries Required-->
+                                <templateId root="2.16.840.1.113883.10.20.22.2.3.1"/>
+                                <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/>
+                                <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                                    displayName="Relevant diagnostic tests and/or laboratory data"/>
+                                <title>Results</title>
+                                <text>
+                                    <table border="1">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Value / Unit</th>
+                                                <th>Interpretation</th>
+                                                <th>Reference Range</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="4">SARS coronavirus 2 RNA panel</th>
+                                            </tr>
+                                            <tr ID="LabResult3">
+                                                <td>SARS coronavirus 2 RNA</td>
+                                                <td>Detected</td>
+                                                <td>Abnormal</td>
+                                                <td>Reference (Normal) for this test is not detected</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </text>
+                                <entry>
+                                    <organizer classCode="BATTERY" moodCode="EVN">
+                                        <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+                                        <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01"/>
+                                        <id root="b5684bf0-eb6f-46dd-9f2e-b6cbcc4155fd"/>
+                                        <!-- There are LOINC panel codes for a COVID as well as a CPT code-->
+                                        <!-- Panel codes include: 94306-8, 94503-0, 94504-8, 94531-1 -->
+                                        <!-- Please note that these are pre-release LOINC codes and codes may change over time -->
+                                        <code code="94531-1" displayName="SARS coronavirus 2 RNA panel" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                                        <!-- Alternatively CPT codes may be used in the panel as what was ordered -->
+                                        <!-- <code code="87635" displayName="Infectious agent detection by nucleic acid (DNA or RNA); severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) (Coronavirus disease [COVID-19]), amplified probe technique" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT"/> -->
+                                        <statusCode code="completed"/>
+                                        <effectiveTime>
+                                            <low value="202003221426-0500"/>
+                                            <high value="202003221426-0500"/>
+                                        </effectiveTime>
+                                        <component>
+                                            <observation classCode="OBS" moodCode="EVN">
+                                                <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                                                <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+                                                <id root="5a6be91a-32d5-4d24-a8bd-07d10a33414d"/>
+                                                <!-- This is a LOINC code uses respiratory sample which would include nasal pharynx swab. Other codes that could be used in different circumstances include -->
+                                                <!-- All potential codes for different sample sites or methods include: 94306-8, 94307-6, 94308-4, 94309-2, 94310-0, 94311-8, 94312-6, 94313-4, 94314-2, 94315-9, 94316-7, 94499-1, 94500-6 -->
+                                                    <!-- 94501-4, 94502-2, 94503-0, 94504-8, 94505-5, 94506-3, 94507-1, 94508-9, 94509-7, 94510-5, 94511-3, 94531-1, 94532-9, 94533-7, 94534-5, 94547-7	-->
+                                                <!-- You can check LOINC code detail by using their open API, such as https://loinc.org/94500-6/ -->
+                                                <!-- Please note that these are pre-release LOINC codes and codes may change over time -->
+                                                <code code="94500-6" displayName="SARS coronavirus 2 RNA" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                                                <text>
+                                                    <reference value="#LabResult3"/>
+                                                </text>
+                                                <statusCode code="completed"/>
+                                                <effectiveTime value="202003221426-0500"/>
+                                                <!-- Since this is a pre-release code there is not an established answer list and this may vary -->
+                                                <!-- <value xsi:type="CD" code="260373002" codeSystemName="SNOMED-CT" displayName="Undetected" codeSystem="2.16.840.1.113883.6.96"/> -->
+                                                <value xsi:type="CD" code="260373001" codeSystemName="SNOMED-CT" displayName="Detected" codeSystem="2.16.840.1.113883.6.96"/>
+                                                <interpretationCode code="A" codeSystem="2.16.840.1.113883.5.83"/>
+                                                <referenceRange>
+                                                    <observationRange>
+                                                        <text>Reference (Normal) for this test is not detected</text>
+                                                        <value xsi:type="CD" code="260415000" codeSystemName="SNOMED-CT" displayName="Not Detected" codeSystem="2.16.840.1.113883.6.96"/>
+                                                        <!-- This interpretation code denotes that this reference range is for normal results. This is not the interpretation a specific patient value-->
+                                                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                                                    </observationRange>
+                                                </referenceRange>
+                                            </observation>
+                                        </component>
+                                    </organizer>
+                                </entry>
+                            </section>
+                        </component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>
