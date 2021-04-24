@@ -3,8 +3,8 @@ var Mustache = require('mustache');
 
 function handleNewButton() {
   try {
-    console.log(JSON.stringify($("#myForm").serializeArray()));
-    var data = $("#myForm").serializeArray();
+    console.log(JSON.stringify($("#reportForm").serializeArray()));
+    var data = $("#reportForm").serializeArray();
     toTemplate = {}
     data.forEach((object, i) => {
       toTemplate[object[Object.keys(object)[0]]] = object.value
