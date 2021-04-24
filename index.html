@@ -19,31 +19,49 @@
 	<div class="buttons">
             <button id="button" disabled="disabled">Load Patient information</button>
 	</div>
-        <form id="reportForm">
-            <table id="patientName">
-                <thead>
-                    <th>Family Name</th>
-                    <th>Given Name</th>
-                    <th>Second And Further Given Names Or Initials Thereof</th>
-                    <th>Suffix (e.g., Jr Or Iii)</th>
-                    <th>Prefix (e.g., Dr)</th>
-                    <th>Effective Date</th>
-                    <th>Expiration Date</th>
-                    <th>Professional Suffix</th>
-                    <th>Called By</th>
-                </thead>
-                <tr>
-                    <td>Everyman</td>
-                    <td>Adam</td>
-                </tr>
-            </table>
-            <br/>
-            <select id="administrativeGender" name="administrativeGender">
-                <option value="F">Female</option>
-                <option value="M">Male</option>
-                <option value="UN">Undifferenciated</option>
-            </select>
-        </form>
+        <br/>
+        <label for="recorId">Record ID</label>>
+        <input id="recordId" name="recordId" form="reportForm" type="text" placeholder="NHC" value="345678912-0154">
+        <br/>
+        <div>
+            <form id="reportForm">
+                <table id="patientName">
+                    <thead>
+                        <th>Family Name</th>
+                        <th>Given Name</th>
+                        <th>Second And Further Given Names Or Initials Thereof</th>
+                        <th>Suffix (e.g., Jr Or Iii)</th>
+                        <th>Prefix (e.g., Dr)</th>
+                        <th>Effective Date</th>
+                        <th>Expiration Date</th>
+                        <th>Professional Suffix</th>
+                        <th>Called By</th>
+                    </thead>
+                    <tr>
+                        <td><input id="familyName1" name="family" type="text" placeholder="NHC" value="Everyman"/></td>
+                        <td><input id="given1" name="given" type="text" placeholder="NHC" value="Adam"/></td>
+                    </tr>
+                </table>
+                <br/>
+                <label for="administrativeGender">Administrative Gender</label>
+                <select id="administrativeGender" name="administrativeGender">
+                    <option value='{"code"="F","displayName"="Female"}'>Female</option>
+                    <option value='{"code"="M","displayName"="Male"}'>Male</option>
+                    <option value="UN">Undifferenciated</option>
+                </select>
+                <br/>
+                <label for="birthTime">Birth date</label>
+                <input type="date" id="birthTime" name="birthTime"/>
+                <br/>
+                <label for="maritalStatusCode">Marital Status</label>
+                <select id="maritalStatusCode" name="maritalStatusCode">
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>
+                    <option value="UN">Undifferenciated</option>
+                </select>
+               
+            </form>
+        </div>
 	<textarea style="resize:none" name="name" id="mainDocumentArea"></textarea>
 </div>
 
