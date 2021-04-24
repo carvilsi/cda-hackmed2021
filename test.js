@@ -8,6 +8,19 @@ function handleNewButton() {
     toTemplate = {}
     data.forEach((object, i) => {
       toTemplate[object[Object.keys(object)[0]]] = object.value
+
+      var jsonObject;
+      try {
+          jsonObject = JSON.parse(object.value);
+      } catch (exc) {
+        console.log ("it is not JASON");        
+      }
+
+      if (typeof jsonObject !== 'undefined') {
+        $.each(jsonObject, function(objectName, objectValue) {
+          toTemplate[object[Object.keys(object)[0]] + '__' + objectName] = objectValue;
+        });
+      }
     });
 
     fs.readFile('./template.mustache', function (err, data) {
