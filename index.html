@@ -38,7 +38,7 @@
                         <th>Called By</th>
                     </thead>
                     <tr>
-                        <td><input id="familyName1" name="family" type="text" placeholder="NHC" value="Everyman"/></td>
+                        <td><input id="family1" name="family" type="text" placeholder="NHC" value="Everyman"/></td>
                         <td><input id="given1" name="given" type="text" placeholder="NHC" value="Adam"/></td>
                     </tr>
                 </table>
@@ -55,9 +55,40 @@
                 <br/>
                 <label for="maritalStatusCode">Marital Status</label>
                 <select id="maritalStatusCode" name="maritalStatusCode">
-                    <option value="F">Female</option>
-                    <option value="M">Male</option>
-                    <option value="UN">Undifferenciated</option>
+                    <option value='{"code":"A","displayName":"Annulled"}' title="Marriage contract has been declared null and to not have existed">Annulled</option>
+                    <option value='{"code":"D","displayName":"Divorced"}' title="Marriage contract has been declared dissolved and inactive">Divorced</option>
+                    <option value='{"code":"I","displayName":"Interlocutory"}' title="Subject to an Interlocutory Decree.">Interlocutory</option>
+                    <option value='{"code":"L","displayName":"Legally Separated"}' title="Legally Separated">Legally Separated</option>
+                    <option value='{"code":"M","displayName":"Married"}' title="A current marriage contract is active">Married</option>
+                    <option value='{"code":"P","displayName":"Polygamus"}' title="More than 1 current spouse">Polygamus</option>
+                    <option value='{"code":"S","displayName":"Never Married"}' title="No marriage contract has ever been entered">Never Married</option>
+                    <option value='{"code":"T","displayName":"Domestic partner"}' title="Person declares that a domestic partner relationship exists.">Domestic partner</option>
+                    <option value='{"code":"W","displayName":"Widowed"}' title="The spouse has died">Widowed</option>
+                </select>
+                <label for="religiousAffiliationCode">Religious Affiliation</label>
+                <select id="religiousAffiliationCode" name="religiousAffiliationCode">
+                    <option value='{"code":"1013","displayName":"Christian (non-Catholic, non-specific)"}' title="">Christian (non-Catholic, non-specific)</option>
+                </select>
+                <label for="raceCode">Race</label>
+                <select id="raceCode" name="raceCode">
+                    <option value='{"code":"2106-3","displayName":"White"}' title="">White</option>
+                </select>
+                <label for="ethnicGroupCode">Ethnic group</label>
+                <select id="ethnicGroupCode" name="ethnicGroupCode">
+                    <option value='{"code":"2186-5","displayName":"Not Hispanic or Latino"}' title="">Not Hispanic or Latino</option>
+                </select>
+                <label for="languageCommunication">Language</label>
+                <select id="languageCommunication" name="languageCommunication">
+                    <option value='{"code":"","displayName":""}' title=""></option>
+                    <option value='{"code":"","displayName":""}' title=""></option>
+                </select>
+                <label for=""></label>
+                <select id="" name="">
+                    <option value='{"code":"","displayName":""}' title=""></option>
+                </select>
+                <label for=""></label>
+                <select id="" name="">
+                    <option value='{"code":"","displayName":""}' title=""></option>
                 </select>
                 <div class="ui-widget">
                     <label >Description: </label>
