@@ -1,19 +1,22 @@
-const fs = require('fs')
-var Mustache = require('mustache');
+const fs       = require('fs')
+var Mustache   = require('mustache');
+const {remote} = require('electron');
+var dialog     = remote.dialog;
 
-function handleNewButton() {
+async function handleNewButton() {
   try {
     console.log(JSON.stringify($("#reportForm").serializeArray()));
     var data = $("#reportForm").serializeArray();
+
     toTemplate = {}
     data.forEach((object, i) => {
       toTemplate[object[Object.keys(object)[0]]] = object.value
 
       var jsonObject;
       try {
-          jsonObject = JSON.parse(object.value);
+        jsonObject = JSON.parse(object.value);
       } catch (exc) {
-        console.log ("it is not JASON");        
+        console.log ("it is not JASON");
       }
 
       if (typeof jsonObject !== 'undefined') {
@@ -23,12 +26,26 @@ function handleNewButton() {
       }
     });
 
-    fs.readFile('./template.mustache', function (err, data) {
-      if (err) throw err;
-      var output = Mustache.render(data.toString(), toTemplate);
-      console.log(`🐛 ${JSON.stringify(output)}`)
-    });
+    var data   = await fs.readFileSync('./template.mustache');
+    var output = Mustache.render(data.toString(), toTemplate);
 
+    var browserWindow = remote.getCurrentWindow();
+    var options = {
+        title: "Save CDA file",
+        defaultPath : "/tmp",
+        filters: [
+            {name: 'Custom File Type', extensions: ['xml']}
+        ]
+    }
+
+    dialog.showSaveDialog({browserWindow, options}, (file)=>{
+      if (typeof file  !== 'undefined') {
+        fs.writeFile(file, output, (err) => {
+          if (err) throw err
+          console.log(`Filel ${file} has been saved`);
+        })
+      }
+    });
   } catch (e) {
     console.log(e);
   }
