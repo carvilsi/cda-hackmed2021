@@ -24,23 +24,47 @@
         <input id="recordId" name="recordId" form="reportForm" type="text" placeholder="NHC" value="345678912-0154">
         <br/>
         <div>
+            <form id="patientNameForm">
+            </form>
+            <form id="languagesForm">
+            </form>
             <form id="reportForm">
                 <table id="patientName">
                     <thead>
                         <th>Family Name</th>
                         <th>Given Name</th>
                         <th>Second And Further Given Names Or Initials Thereof</th>
-                        <th>Suffix (e.g., Jr Or Iii)</th>
+                        <th>Suffix (e.g., Jr Or III)</th>
                         <th>Prefix (e.g., Dr)</th>
                         <th>Effective Date</th>
                         <th>Expiration Date</th>
                         <th>Professional Suffix</th>
                         <th>Called By</th>
                     </thead>
-                    <tr>
-                        <td><input id="family1" name="family" type="text" placeholder="NHC" value="Everyman"/></td>
-                        <td><input id="given1" name="given" type="text" placeholder="NHC" value="Adam"/></td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td><input form="patientNameForm" id="family1" name="family" type="text" placeholder="NHC" value="Everyman"/></td>
+                            <td><input form="patientNameForm" id="given1" name="given" type="text" placeholder="Given" value="Adam"/></td>
+                            <td><input form="patientNameForm" id="secondGiven1" name="secondGiven" type="text" placeholder="Other given names/Initials" value=""/></td>
+                            <td><input form="patientNameForm" id="Suffix1" name="suffix" type="text" placeholder="Suffix" value=""/></td>
+                            <td><input form="patientNameForm" id="Prefix1" name="prefix" type="text" placeholder="Prefix" value=""/></td>
+                            <td><input form="patientNameForm" id="effectiveDate1" name="effectiveDate1" type="date" placeholder="" value=""/></td>
+                            <td><input form="patientNameForm" id="expirationDate1" name="expirationDate" type="text" placeholder="" value=""/></td>
+                            <td><input form="patientNameForm" id="ProfessionalSuffix1" name="proffesionalSuffix" type="text" placeholder="" value=""/></td>
+                            <td><input form="patientNameForm" id="CalledBy1" name="CalledBy" type="text" placeholder="" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td><input form="patientNameForm" id="family2" name="family" type="text" placeholder="NHC" value="Everyman"/></td>
+                            <td><input form="patientNameForm" id="given2" name="given" type="text" placeholder="Given" value="Adam"/></td>
+                            <td><input form="patientNameForm" id="secondGiven2" name="secondGiven" type="text" placeholder="Other given names/Initials" value=""/></td>
+                            <td><input form="patientNameForm" id="Suffix2" name="suffix" type="text" placeholder="Suffix" value=""/></td>
+                            <td><input form="patientNameForm" id="Prefix2" name="prefix" type="text" placeholder="Prefix" value=""/></td>
+                            <td><input form="patientNameForm" id="effectiveDate2" name="effectiveDate1" type="date" placeholder="" value=""/></td>
+                            <td><input form="patientNameForm" id="expirationDate2" name="expirationDate" type="text" placeholder="" value=""/></td>
+                            <td><input form="patientNameForm" id="ProfessionalSuffix2" name="proffesionalSuffix" type="text" placeholder="" value=""/></td>
+                            <td><input form="patientNameForm" id="CalledBy2" name="CalledBy" type="text" placeholder="" value=""/></td>
+                        </tr>
+                    </tbody>
                 </table>
                 <br/>
                 <label for="administrativeGender">Administrative Gender</label>
@@ -65,31 +89,92 @@
                     <option value='{"code":"T","displayName":"Domestic partner"}' title="Person declares that a domestic partner relationship exists.">Domestic partner</option>
                     <option value='{"code":"W","displayName":"Widowed"}' title="The spouse has died">Widowed</option>
                 </select>
+                <br/>
                 <label for="religiousAffiliationCode">Religious Affiliation</label>
                 <select id="religiousAffiliationCode" name="religiousAffiliationCode">
                     <option value='{"code":"1013","displayName":"Christian (non-Catholic, non-specific)"}' title="">Christian (non-Catholic, non-specific)</option>
                 </select>
+                <br/>
                 <label for="raceCode">Race</label>
                 <select id="raceCode" name="raceCode">
                     <option value='{"code":"2106-3","displayName":"White"}' title="">White</option>
                 </select>
+                <br/>
                 <label for="ethnicGroupCode">Ethnic group</label>
                 <select id="ethnicGroupCode" name="ethnicGroupCode">
                     <option value='{"code":"2186-5","displayName":"Not Hispanic or Latino"}' title="">Not Hispanic or Latino</option>
                 </select>
-                <label for="languageCommunication">Language</label>
-                <select id="languageCommunication" name="languageCommunication">
-                    <option value='{"code":"","displayName":""}' title=""></option>
-                    <option value='{"code":"","displayName":""}' title=""></option>
-                </select>
-                <label for=""></label>
-                <select id="" name="">
-                    <option value='{"code":"","displayName":""}' title=""></option>
-                </select>
-                <label for=""></label>
-                <select id="" name="">
-                    <option value='{"code":"","displayName":""}' title=""></option>
-                </select>
+                <br/>
+                <table id="languageCommunicationsTable">
+                    <thead>
+                        <th>Language</th>
+                        <th>Mode</th>
+                        <th>Proficiency Level</th>
+                        <th>Prefered</th>
+                    </thead>
+                    <tbody>
+                        <tr id="languageCommunicationRow1" class="languageCommunicationRow">
+                             <td>
+                                 <select id="languageCode1" name="languageCode" form="languagesForm" >
+                                     <option value="eng" selected="selected">English</option>
+                                     <option value="ita">Italian</option>
+                                     <option value="spa">Spanish</option>
+                                 </select>
+                             </td>
+                             <td>
+                                 <select id="modeCode1" name="modeCode" form="languagesForm" >
+                                     <option value='{"code":"ESGN","displayName":"Expressed signed"'>Expressed signed</option>
+                                     <option value='{"code":"ESP","displayName":"Expressed spoken"' selected="selected">Expressed spoken</option>
+                                     <option value='{"code":"EWR","displayName":"Expressed written"'>Expressed written</option>
+                                     <option value='{"code":"RSGN","displayName":"Received signed"'>Received signed</option>
+                                     <option value='{"code":"RSP","displayName":"Received spoken"'>Received spoken</option>
+                                     <option value='{"code":"RWR","displayName":"Received written"'>Received written</option>
+                                 </select>
+                             </td>
+                             <td>
+                                 <select id="proficiencyLevelCode1" name="proficiencyLevelCode" form="languagesForm" >
+                                     <option value='{"code":"E","displayName":"Excellent"' selected="selected">Excellent</option>
+                                     <option value='{"code":"F","displayName":"Fair"'>Fair</option>
+                                     <option value='{"code":"G","displayName":"Good"'>Good</option>
+                                     <option value='{"code":"P","displayName":"Poor"'>Poor</option>
+                                 </select>
+                             </td>
+                             <td>
+                                 <input id="preferenceInd1" name="preferenceInd" type="checkbox" checked="checked" form="languagesForm">
+                             </td>
+                        </tr>
+                        <tr id="languageCommunicationRow2" class="languageCommunicationRow">
+                             <td>
+                                 <select id="languageCode2" name="languageCode" form="languagesForm" >
+                                     <option value="eng" selected="selected">English</option>
+                                     <option value="ita">Italian</option>
+                                     <option value="spa">Spanish</option>
+                                 </select>
+                             </td>
+                             <td>
+                                 <select id="modeCode2" name="modeCode" form="languagesForm" >
+                                     <option value='{"code":"ESGN","displayName":"Expressed signed"'>Expressed signed</option>
+                                     <option value='{"code":"ESP","displayName":"Expressed spoken"' selected="selected">Expressed spoken</option>
+                                     <option value='{"code":"EWR","displayName":"Expressed written"'>Expressed written</option>
+                                     <option value='{"code":"RSGN","displayName":"Received signed"'>Received signed</option>
+                                     <option value='{"code":"RSP","displayName":"Received spoken"'>Received spoken</option>
+                                     <option value='{"code":"RWR","displayName":"Received written"'>Received written</option>
+                                 </select>
+                             </td>
+                             <td>
+                                 <select id="proficiencyLevelCode2" name="proficiencyLevelCode" form="languagesForm" >
+                                     <option value='{"code":"E","displayName":"Excellent"' selected="selected">Excellent</option>
+                                     <option value='{"code":"F","displayName":"Fair"'>Fair</option>
+                                     <option value='{"code":"G","displayName":"Good"'>Good</option>
+                                     <option value='{"code":"P","displayName":"Poor"'>Poor</option>
+                                 </select>
+                             </td>
+                             <td>
+                                 <input id="preferenceInd2" name="preferenceInd" type="checkbox" form="languagesForm">
+                             </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="ui-widget">
                     <label >Description: </label>
                     <input type="text" name="description" id="description">
