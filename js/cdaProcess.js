@@ -26,8 +26,8 @@ async function handleNewButton() {
       }
     });
 
-    var data   = await fs.readFileSync('./template.mustache');
-    var output = Mustache.render(data.toString(), toTemplate);
+    const dataTemplate = await fs.readFileSync('./templates/template.mustache');
+    var output = Mustache.render(dataTemplate.toString(), toTemplate);
 
     var browserWindow = remote.getCurrentWindow();
     var options = {
